@@ -1,0 +1,736 @@
+{
+    "thyroid_nodule_det": {
+        "anatomy": "Thyroid",
+        "task_name": "detection",
+        "num_classes": 1,
+        "label_map": {
+            "0": "Thyroid Node"
+        },
+        "dataset": {
+            "name": "FMC_UIA",
+            "type": "Public"
+        },
+        "status": "completed",
+        "weight_path": "weights/thyroid_nodule_det.pth",
+        "best_metrics": {
+            "IoU": 0.6251807198881555
+        },
+        "register_time": "2026-02-04 15:44:25",
+        "resample_target": [
+            500,
+            718
+        ],
+        "last_update": "2026-02-09 18:28:01",
+        "train_samples": 2999
+    },
+    "organ_cls": {
+        "anatomy": "Abdomen",
+        "task_name": "classification",
+        "num_classes": 6,
+        "label_map": {
+            "0": "bladder",
+            "1": "bowel",
+            "2": "gallbladder",
+            "3": "kidney",
+            "4": "liver",
+            "5": "spleen"
+        },
+        "dataset": {
+            "name": "FMC_UIA",
+            "type": "Public"
+        },
+        "status": "completed",
+        "weight_path": "weights/organ_cls.pth",
+        "best_metrics": {
+            "Accuracy": 1.0,
+            "F1-Score": 1.0
+        },
+        "register_time": "2026-02-04 18:05:59",
+        "resample_target": [
+            64,
+            64
+        ],
+        "last_update": "2026-02-10 21:58:20",
+        "train_samples": 219
+    },
+    "thyroid_nodule": {
+        "anatomy": "Thyroid",
+        "task_name": "segmentation",
+        "num_classes": 2,
+        "label_map": {
+            "0": "background",
+            "1": "thyroid_nodule"
+        },
+        "dataset": {
+            "name": "FMC_UIA",
+            "type": "Public"
+        },
+        "status": "completed",
+        "weight_path": "weights/thyroid_nodule.pth",
+        "best_metrics": {
+            "Dice": 0.7536457299061541
+        },
+        "register_time": "2026-02-04 20:42:18",
+        "resample_target": [
+            342,
+            410
+        ],
+        "last_update": "2026-02-10 13:41:24",
+        "train_samples": 2094
+    },
+    "fetal_femur": {
+        "anatomy": "Fetal",
+        "task_name": "regression",
+        "num_classes": 2,
+        "label_map": {
+            "0": "point_0",
+            "1": "point_1"
+        },
+        "dataset": {
+            "name": "FMC_UIA",
+            "type": "Public"
+        },
+        "status": "completed",
+        "weight_path": "weights/fetal_femur.pth",
+        "best_metrics": {
+            "1/MAE (pixels)": 0.07344717573373608
+        },
+        "description": "fetal_femur regression",
+        "register_time": "2026-02-04 22:03:23",
+        "resample_target": [
+            661,
+            959
+        ],
+        "last_update": "2026-02-09 19:15:31"
+    },
+    "IUGC": {
+        "anatomy": "Fetal",
+        "task_name": "regression",
+        "num_classes": 3,
+        "label_map": {
+            "0": "p1",
+            "1": "p2",
+            "2": "p3"
+        },
+        "dataset": {
+            "name": "FMC_UIA",
+            "type": "Public"
+        },
+        "status": "completed",
+        "weight_path": "weights/IUGC.pth",
+        "best_metrics": {
+            "1/MAE (pixels)": 0.43957569632745663
+        },
+        "description": "A regression task to predict the coordinates of three specific anatomical landmarks to measure the angle of progression.",
+        "register_time": "2026-02-08 11:06:21",
+        "resample_target": [
+            512,
+            512
+        ],
+        "train_samples": 2818,
+        "last_update": "2026-02-09 18:54:51"
+    },
+    "FUGC": {
+        "anatomy": "Fetal",
+        "task_name": "regression",
+        "num_classes": 2,
+        "label_map": {
+            "0": "P1",
+            "1": "P2"
+        },
+        "dataset": {
+            "name": "FMC_UIA",
+            "type": "Public"
+        },
+        "status": "completed",
+        "weight_path": "weights/FUGC.pth",
+        "best_metrics": {
+            "1/MAE (pixels)": 0.17735241677723282
+        },
+        "description": "A regression task to predict the coordinates of two specific anatomical landmarks to measure cervical length.",
+        "register_time": "2026-02-08 11:35:50",
+        "resample_target": [
+            336,
+            544
+        ],
+        "train_samples": 260,
+        "last_update": "2026-02-11 09:43:15"
+    },
+    "breast_2cls": {
+        "anatomy": "Breast",
+        "task_name": "classification",
+        "num_classes": 2,
+        "label_map": {
+            "0": "benign",
+            "1": "malignant"
+        },
+        "dataset": {
+            "name": "FMC_UIA",
+            "type": "Public"
+        },
+        "status": "completed",
+        "weight_path": "weights/breast_2cls.pth",
+        "best_metrics": {
+            "Accuracy": 0.7028061224489796,
+            "F1-Score": 0.6534697445411731
+        },
+        "description": "A binary version of the task above, likely classifying tumors as benign vs. malignant.",
+        "register_time": "2026-02-08 11:48:40",
+        "resample_target": [
+            402,
+            433
+        ],
+        "train_samples": 555,
+        "last_update": "2026-02-11 09:45:08"
+    },
+    "breast_3cls": {
+        "anatomy": "Breast",
+        "task_name": "classification",
+        "num_classes": 3,
+        "label_map": {
+            "0": "benign",
+            "1": "malignant",
+            "2": "normal"
+        },
+        "dataset": {
+            "name": "FMC_UIA",
+            "type": "Public"
+        },
+        "status": "completed",
+        "weight_path": "weights/breast_3cls.pth",
+        "best_metrics": {
+            "Accuracy": 0.7418831168831169,
+            "F1-Score": 0.6439229961957236
+        },
+        "description": "Classifies maternal breast tumors as normal, benign, or malignant.",
+        "register_time": "2026-02-08 12:44:23",
+        "resample_target": [
+            592,
+            781
+        ],
+        "train_samples": 876,
+        "last_update": "2026-02-09 21:20:44"
+    },
+    "fetal_head_pos_cls": {
+        "anatomy": "Fetal",
+        "task_name": "classification",
+        "num_classes": 8,
+        "label_map": {
+            "0": "Left_Occipital_Anterior",
+            "1": "Left_Occipital_Posterior",
+            "2": "Left_Occipital_Transverse",
+            "3": "Normal_Occipital_Anterior",
+            "4": "Normal_Occipital_Posterior",
+            "5": "Right_Occipital_Anterior",
+            "6": "Right_Occipital_Posterior",
+            "7": "Right_Occipital_Transverse"
+        },
+        "dataset": {
+            "name": "FMC_UIA",
+            "type": "Public"
+        },
+        "status": "completed",
+        "weight_path": "weights/fetal_head_pos_cls.pth",
+        "best_metrics": {
+            "Accuracy": 0.809375,
+            "F1-Score": 0.7360858585858586
+        },
+        "description": "Classifies the fetal breech (sacral) position into one of 8 standard presentations.",
+        "register_time": "2026-02-08 13:19:00",
+        "resample_target": [
+            564,
+            720
+        ],
+        "train_samples": 2546,
+        "last_update": "2026-02-25 18:36:03"
+    },
+    "fetal_plane_cls": {
+        "anatomy": "Fetal",
+        "task_name": "classification",
+        "num_classes": 6,
+        "label_map": {
+            "0": "cls1",
+            "1": "cls2",
+            "2": "cls3",
+            "3": "cls4",
+            "4": "cls5",
+            "5": "cls6"
+        },
+        "dataset": {
+            "name": "FMC_UIA",
+            "type": "Public"
+        },
+        "status": "completed",
+        "weight_path": "weights/fetal_plane_cls.pth",
+        "best_metrics": {
+            "Accuracy": 0.9254032258064516,
+            "F1-Score": 0.8849489061317017
+        },
+        "description": "Identifies which of 6 standard diagnostic planes an ultrasound image represents (e.g., abdomen, brain, femur).",
+        "register_time": "2026-02-09 15:00:37",
+        "resample_target": [
+            661,
+            959
+        ],
+        "train_samples": 7439,
+        "last_update": "2026-02-09 18:07:45"
+    },
+    "fetal_sacral_pos_cls": {
+        "anatomy": "Fetal",
+        "task_name": "classification",
+        "num_classes": 8,
+        "label_map": {
+            "0": "Left_Sacral_Anterior",
+            "1": "Left_Sacral_Posterior",
+            "2": "Left_Sacral_Transverse",
+            "3": "Normal_Sacral_Anterior",
+            "4": "Normal_Sacral_Posterior",
+            "5": "Right_Sacral_Anterior",
+            "6": "Right_Sacral_Posterior",
+            "7": "Right_Sacral_Transverse"
+        },
+        "dataset": {
+            "name": "FMC_UIA",
+            "type": "Public"
+        },
+        "status": "completed",
+        "weight_path": "weights/fetal_sacral_pos_cls.pth",
+        "best_metrics": {
+            "Accuracy": 0.6875,
+            "F1-Score": 0.5926256613756613
+        },
+        "description": "Classifies the fetal breech (sacral) position into one of 8 standard presentations.",
+        "register_time": "2026-02-09 15:03:20",
+        "resample_target": [
+            564,
+            720
+        ],
+        "train_samples": 483,
+        "last_update": "2026-02-09 22:58:19"
+    },
+    "liver_lesion_2cls": {
+        "anatomy": "Liver",
+        "task_name": "classification",
+        "num_classes": 2,
+        "label_map": {
+            "0": "hepatocellular carcinoma",
+            "1": "Hemangioma"
+        },
+        "dataset": {
+            "name": "FMC_UIA",
+            "type": "Public"
+        },
+        "status": "completed",
+        "weight_path": "weights/liver_lesion_2cls.pth",
+        "best_metrics": {
+            "Accuracy": 0.8826219512195121,
+            "F1-Score": 0.8462116474311596
+        },
+        "description": "Differentiates between two types of liver tumors (Hemangioma and hepatocellular carcinoma).",
+        "register_time": "2026-02-09 15:05:16",
+        "resample_target": [
+            667,
+            1004
+        ],
+        "train_samples": 3279,
+        "last_update": "2026-02-10 08:25:26"
+    },
+    "lung_2cls": {
+        "anatomy": "Lung",
+        "task_name": "classification",
+        "num_classes": 2,
+        "label_map": {
+            "0": "cls1",
+            "1": "cls2"
+        },
+        "dataset": {
+            "name": "FMC_UIA",
+            "type": "Public"
+        },
+        "status": "completed",
+        "weight_path": "weights/lung_2cls.pth",
+        "best_metrics": {
+            "Accuracy": 0.6666666666666666,
+            "F1-Score": 0.5592185592185592
+        },
+        "description": "A binary classification of lung images, likely distinguishing between healthy and diseased states.",
+        "register_time": "2026-02-09 15:07:24",
+        "resample_target": [
+            256,
+            256
+        ],
+        "train_samples": 329,
+        "last_update": "2026-02-11 09:09:42"
+    },
+    "lung_disease_3cls": {
+        "anatomy": "Lung",
+        "task_name": "classification",
+        "num_classes": 3,
+        "label_map": {
+            "0": "covid",
+            "1": "healthy",
+            "2": "other"
+        },
+        "dataset": {
+            "name": "FMC_UIA",
+            "type": "Public"
+        },
+        "status": "completed",
+        "weight_path": "weights/lung_disease_3cls.pth",
+        "best_metrics": {
+            "Accuracy": 0.7633928571428572,
+            "F1-Score": 0.7354993386243386
+        },
+        "description": "Classifies lung ultrasound images into 3 categories (e.g., COVID-19, other disease, healthy).",
+        "register_time": "2026-02-09 15:08:59",
+        "resample_target": [
+            511,
+            411
+        ],
+        "train_samples": 636,
+        "last_update": "2026-02-10 08:31:04"
+    },
+    "spinal_cord_injury_loc": {
+        "anatomy": "spinal",
+        "task_name": "detection",
+        "num_classes": 1,
+        "label_map": {
+            "0": "Injury"
+        },
+        "dataset": {
+            "name": "FMC_UIA",
+            "type": "Public"
+        },
+        "status": "completed",
+        "weight_path": "weights/spinal_cord_injury_loc.pth",
+        "best_metrics": {
+            "IoU": 0.8552332520484924
+        },
+        "description": "A task to locate spinal cord injuries. *Note: The official documentation describes this as a multi-structure segmentation task. In this project's structure, however, it is handled as a detection task.*",
+        "register_time": "2026-02-09 15:11:43",
+        "resample_target": [
+            275,
+            670
+        ],
+        "train_samples": 818,
+        "last_update": "2026-02-25 15:40:52"
+    },
+    "uterine_fibroid_det": {
+        "anatomy": "uterine",
+        "task_name": "detection",
+        "num_classes": 1,
+        "label_map": {
+            "0": "uterine fibroids"
+        },
+        "dataset": {
+            "name": "FMC_UIA",
+            "type": "Public"
+        },
+        "status": "completed",
+        "weight_path": "weights/uterine_fibroid_det.pth",
+        "best_metrics": {
+            "IoU": 0.7000518441200256
+        },
+        "description": "Draws a bounding box to locate uterine fibroids.",
+        "register_time": "2026-02-09 15:14:05",
+        "resample_target": [
+            768,
+            1024
+        ],
+        "train_samples": 516,
+        "last_update": "2026-02-25 15:55:00"
+    },
+    "breast_lesion": {
+        "anatomy": "Breast",
+        "task_name": "segmentation",
+        "num_classes": 2,
+        "label_map": {
+            "0": "background",
+            "1": "breast tumors"
+        },
+        "dataset": {
+            "name": "FMC_UIA",
+            "type": "Public"
+        },
+        "status": "completed",
+        "weight_path": "weights/breast_lesion.pth",
+        "best_metrics": {
+            "Dice": 0.7915406588997159
+        },
+        "description": "Performs pixel-level segmentation to outline the boundaries of maternal breast tumors.",
+        "register_time": "2026-02-09 15:16:29",
+        "resample_target": [
+            430,
+            356
+        ],
+        "train_samples": 2219,
+        "last_update": "2026-02-25 17:17:43"
+    },
+    "cardiac_multi": {
+        "anatomy": "Heart",
+        "task_name": "segmentation",
+        "num_classes": 4,
+        "label_map": {
+            "0": "background",
+            "1": "cls1",
+            "2": "cls2",
+            "3": "cls3"
+        },
+        "dataset": {
+            "name": "FMC_UIA",
+            "type": "Public"
+        },
+        "status": "completed",
+        "weight_path": "weights/cardiac_multi.pth",
+        "best_metrics": {
+            "Dice": 0.8847315390904744
+        },
+        "description": "A multi-class segmentation of the human heart, outlining structures like the left ventricle blood pool, myocardium, and left atrium.",
+        "register_time": "2026-02-09 15:18:09",
+        "resample_target": [
+            487,
+            591
+        ],
+        "train_samples": 1199,
+        "last_update": "2026-02-11 10:40:18"
+    },
+    "carotid_artery": {
+        "anatomy": "carotid",
+        "task_name": "segmentation",
+        "num_classes": 2,
+        "label_map": {
+            "0": "background",
+            "1": "carotid artery"
+        },
+        "dataset": {
+            "name": "FMC_UIA",
+            "type": "Public"
+        },
+        "status": "completed",
+        "weight_path": "weights/carotid_artery.pth",
+        "best_metrics": {
+            "Dice": 0.9580473303794861
+        },
+        "description": "Outlines the carotid artery for assessing stenosis and other conditions.",
+        "register_time": "2026-02-09 15:20:04",
+        "resample_target": [
+            749,
+            709
+        ],
+        "train_samples": 659,
+        "last_update": "2026-02-10 09:40:36"
+    },
+    "cervix": {
+        "anatomy": "cervix",
+        "task_name": "segmentation",
+        "num_classes": 2,
+        "label_map": {
+            "0": "background",
+            "1": "cervical dilation"
+        },
+        "dataset": {
+            "name": "FMC_UIA",
+            "type": "Public"
+        },
+        "status": "completed",
+        "weight_path": "weights/cervix.pth",
+        "best_metrics": {
+            "Dice": 0.8820007046063741
+        },
+        "description": "A binary segmentation task to outline the region of maternal cervical dilation.",
+        "register_time": "2026-02-09 15:21:45",
+        "resample_target": [
+            483,
+            584
+        ],
+        "train_samples": 327,
+        "last_update": "2026-02-11 10:43:13"
+    },
+    "cervix_multi": {
+        "anatomy": "cervix",
+        "task_name": "segmentation",
+        "num_classes": 3,
+        "label_map": {
+            "0": "background",
+            "1": "cls1",
+            "2": "cls2"
+        },
+        "dataset": {
+            "name": "FMC_UIA",
+            "type": "Public"
+        },
+        "status": "completed",
+        "weight_path": "weights/cervix_multi.pth",
+        "best_metrics": {
+            "Dice": 0.9344608272824969
+        },
+        "description": "A multi-class segmentation to outline the anterior and posterior lips of the cervix.",
+        "register_time": "2026-02-09 15:24:58",
+        "resample_target": [
+            336,
+            544
+        ],
+        "train_samples": 261,
+        "last_update": "2026-02-25 16:15:05"
+    },
+    "fetal_abdomen_multi": {
+        "anatomy": "Fetal",
+        "task_name": "segmentation",
+        "num_classes": 5,
+        "label_map": {
+            "0": "background",
+            "1": "cls1",
+            "2": "cls2",
+            "3": "cls3",
+            "4": "cls4"
+        },
+        "dataset": {
+            "name": "FMC_UIA",
+            "type": "Public"
+        },
+        "status": "completed",
+        "weight_path": "weights/fetal_abdomen_multi.pth",
+        "best_metrics": {
+            "Dice": 0.8399997055530548
+        },
+        "description": "A multi-class segmentation of the fetal abdomen, likely outlining multiple internal structures.",
+        "register_time": "2026-02-09 15:26:08",
+        "resample_target": [
+            768,
+            1024
+        ],
+        "train_samples": 952,
+        "last_update": "2026-02-10 10:19:56"
+    },
+    "fetal_head": {
+        "anatomy": "Fetal",
+        "task_name": "segmentation",
+        "num_classes": 2,
+        "label_map": {
+            "0": "background",
+            "1": "fetal head"
+        },
+        "dataset": {
+            "name": "FMC_UIA",
+            "type": "Public"
+        },
+        "status": "completed",
+        "weight_path": "weights/fetal_head.pth",
+        "best_metrics": {
+            "Dice": 0.9726230368531984
+        },
+        "description": "Outlines the contour of the fetal head.",
+        "register_time": "2026-02-09 15:27:22",
+        "resample_target": [
+            512,
+            512
+        ],
+        "train_samples": 2311,
+        "last_update": "2026-02-10 10:43:00"
+    },
+    "fetal_heart": {
+        "anatomy": "Fetal",
+        "task_name": "segmentation",
+        "num_classes": 2,
+        "label_map": {
+            "0": "background",
+            "1": "fetal heart"
+        },
+        "dataset": {
+            "name": "FMC_UIA",
+            "type": "Public"
+        },
+        "status": "completed",
+        "weight_path": "weights/fetal_heart.pth",
+        "best_metrics": {
+            "Dice": 0.8800321459770203
+        },
+        "description": "Outlines the boundary of the fetal heart.",
+        "register_time": "2026-02-09 15:28:05",
+        "resample_target": [
+            661,
+            959
+        ],
+        "train_samples": 177,
+        "last_update": "2026-02-11 10:49:40"
+    },
+    "head_symphysis_multi": {
+        "anatomy": "Fetal",
+        "task_name": "segmentation",
+        "num_classes": 3,
+        "label_map": {
+            "0": "background",
+            "1": "cls1",
+            "2": "cls2"
+        },
+        "dataset": {
+            "name": "FMC_UIA",
+            "type": "Public"
+        },
+        "status": "completed",
+        "weight_path": "weights/head_symphysis_multi.pth",
+        "best_metrics": {
+            "Dice": 0.9582062154621273
+        },
+        "description": "A multi-class task to simultaneously segment both the maternal pubic symphysis and the fetal head.",
+        "register_time": "2026-02-09 15:29:22",
+        "resample_target": [
+            256,
+            256
+        ],
+        "train_samples": 3059,
+        "last_update": "2026-02-25 16:43:48"
+    },
+    "lung": {
+        "anatomy": "Fetal",
+        "task_name": "segmentation",
+        "num_classes": 2,
+        "label_map": {
+            "0": "background",
+            "1": "fetal lungs"
+        },
+        "dataset": {
+            "name": "FMC_UIA",
+            "type": "Public"
+        },
+        "status": "completed",
+        "weight_path": "weights/lung.pth",
+        "best_metrics": {
+            "Dice": 0.8578725710828253
+        },
+        "description": "Outlines the boundary of the fetal lungs.",
+        "register_time": "2026-02-09 15:30:24",
+        "resample_target": [
+            256,
+            256
+        ],
+        "train_samples": 1852,
+        "last_update": "2026-02-10 12:02:09"
+    },
+    "ovary_tumor": {
+        "anatomy": "ovary",
+        "task_name": "segmentation",
+        "num_classes": 2,
+        "label_map": {
+            "0": "background",
+            "1": "ovarian tumors"
+        },
+        "dataset": {
+            "name": "FMC_UIA",
+            "type": "Public"
+        },
+        "status": "completed",
+        "weight_path": "weights/ovary_tumor.pth",
+        "best_metrics": {
+            "Dice": 0.7764959254048087
+        },
+        "description": "Outlines the boundaries of maternal ovarian tumors.",
+        "register_time": "2026-02-09 15:32:44",
+        "resample_target": [
+            537,
+            835
+        ],
+        "train_samples": 881,
+        "last_update": "2026-02-10 14:52:12"
+    }
+}
