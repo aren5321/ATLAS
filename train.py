@@ -47,7 +47,7 @@ TASK_CONFIGURATIONS = [current_task_config]
 
 # Training configuration
 LEARNING_RATE = 1e-3
-BATCH_SIZE = 8
+BATCH_SIZE = 64
 NUM_EPOCHS = 100
 DATA_ROOT_PATH = os.path.dirname(os.path.abspath(__file__))
 RANDOM_SEED = 42
@@ -59,6 +59,9 @@ WEIGHT_PATH='weights'
 
 TASK_ID = args.task_id
 
+
+def _is_numeric(x):
+    return isinstance(x, (int, float, np.integer, np.floating))
 
 
 def main():
@@ -342,18 +345,15 @@ def main():
         sorted_task_ids = sorted(epoch_train_losses.keys())
         for task_id in sorted_task_ids:
             avg_loss = np.mean(epoch_train_losses[task_id])
-            history['train_loss'][task_id].append(avg_loss)
+            history['train_loss'][task_id].append(float(avg_loss))
             logging.info(f"  - Task '{task_id:<25}': {avg_loss:.4f}")
         logging.info("-" * 40)
 
         # Validation
         val_results_df = evaluate(model, val_loader, device)
 
-        # score_cols = [col for col in val_results_df.columns if
-        #               'MAE' not in col and isinstance(val_results_df[col].iloc[0], (int, float))]
-        # Previously MAE was not in metrics; now we include its reciprocal so higher is better
         score_cols = [col for col in val_results_df.columns if
-                      'xxx' not in col and isinstance(val_results_df[col].iloc[0], (int, float))]
+                      'xxx' not in col and _is_numeric(val_results_df[col].iloc[0])]
         avg_val_score = 0
         if not val_results_df.empty and score_cols:
             avg_val_score = val_results_df[score_cols].mean().mean()
@@ -362,7 +362,7 @@ def main():
         if not val_results_df.empty:
             logging.info(val_results_df.to_string(index=False))
         logging.info(f"--- Average Val Score (Higher is better): {avg_val_score:.4f} ---")
-        history['val_score'].append(avg_val_score)
+        history['val_score'].append(float(avg_val_score))
 
         print("Save train_history.json........")
         train_history_path = os.path.join(log_dir, f"{TASK_ID}_{model_name}_train_history.json")
@@ -412,7 +412,7 @@ def main():
         logging.info(f"Updated Task {args.task_id} results with: {best_scores}")
 
     score_cols = [col for col in tes_results_df.columns if
-                  'xxx' not in col and isinstance(tes_results_df[col].iloc[0], (int, float))]
+                  'xxx' not in col and _is_numeric(tes_results_df[col].iloc[0])]
     avg_tes_score = 0
     if not tes_results_df.empty and score_cols:
         avg_tes_score = tes_results_df[score_cols].mean().mean()
@@ -421,7 +421,7 @@ def main():
     if not tes_results_df.empty:
         logging.info(tes_results_df.to_string(index=False))
     logging.info(f"--- Average Test Score (Higher is better): {avg_tes_score:.4f} ---")
-    history['tes_score'].append(avg_tes_score)
+    history['tes_score'].append(float(avg_tes_score))
 
 
     print("Save Test_history.json........")
