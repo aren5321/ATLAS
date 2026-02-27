@@ -48,7 +48,7 @@ TASK_CONFIGURATIONS = [current_task_config]
 # Training configuration
 LEARNING_RATE = 1e-3
 BATCH_SIZE = 8
-NUM_EPOCHS = 10
+NUM_EPOCHS = 100
 DATA_ROOT_PATH = os.path.dirname(os.path.abspath(__file__))
 RANDOM_SEED = 42
 MODEL_SAVE_PATH = '.pth'
