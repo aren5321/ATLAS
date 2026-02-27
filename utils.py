@@ -14,15 +14,19 @@ tm = TaskManager()
 TASK_CONFIGURATIONS=tm.get_all_tasks()
 
 def set_seed(seed):
-    """Set random seeds for reproducibility."""
+
     random.seed(seed)
     np.random.seed(seed)
     torch.manual_seed(seed)
-    torch.cuda.manual_seed_all(seed)
     if torch.cuda.is_available():
         torch.cuda.manual_seed_all(seed)
         torch.backends.cudnn.deterministic = True
         torch.backends.cudnn.benchmark = False
+
+    try:
+        torch.use_deterministic_algorithms(True)
+    except Exception:
+        pass
 
 def multi_task_collate_fn(batch):
     """

@@ -1,3 +1,6 @@
+import os
+os.environ["CUBLAS_WORKSPACE_CONFIG"] = ":4096:8"
+
 import torch
 import torch.nn as nn
 import torch.optim as optim
@@ -8,7 +11,6 @@ from albumentations.pytorch import ToTensorV2
 import segmentation_models_pytorch.losses as smp_losses
 import numpy as np
 import random
-import os
 import logging
 import json
 from task_manager import TaskManager
@@ -33,8 +35,6 @@ args = parser.parse_args()
 tm = TaskManager()
 cfg = tm.get_task_config(args.task_id)
 
-
-# --- After modification ---
 # Directly use real-time config from tm to construct a list that matches Factory requirements
 current_task_config = {
     'task_id': args.task_id,
@@ -47,8 +47,8 @@ TASK_CONFIGURATIONS = [current_task_config]
 
 # Training configuration
 LEARNING_RATE = 1e-3
-BATCH_SIZE = 64
-NUM_EPOCHS = 100
+BATCH_SIZE = 8
+NUM_EPOCHS = 10
 DATA_ROOT_PATH = os.path.dirname(os.path.abspath(__file__))
 RANDOM_SEED = 42
 MODEL_SAVE_PATH = '.pth'
@@ -58,7 +58,6 @@ PATIENCE = 20
 WEIGHT_PATH='weights'
 
 TASK_ID = args.task_id
-
 
 def _is_numeric(x):
     return isinstance(x, (int, float, np.integer, np.floating))
@@ -105,12 +104,6 @@ def main():
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     logging.info(f"Device used: {device}")
     model = MultiTaskModelFactory(task_configs=TASK_CONFIGURATIONS).to(device)
-    # ---  save initial weights for TIES-Merging ---
-    # initial_template_path = "initial_template.pth"
-    # if not os.path.exists(initial_template_path):
-    #     torch.save(model.state_dict(), initial_template_path)
-    #     print(f"Initial template (untrained weights) saved to {initial_template_path}")
-    # ------------------------------
 
     params = sum(p.numel() for p in model.parameters())
     print(f"Model parameter count: {params / 1000:.2f} K")
@@ -233,7 +226,9 @@ def main():
         shuffle=False,
         num_workers=4,
         pin_memory=True,
-        collate_fn=multi_task_collate_fn
+        collate_fn=multi_task_collate_fn,
+        worker_init_fn=seed_worker,
+        generator=torch.Generator().manual_seed(RANDOM_SEED + 1),
     )
     tes_loader = torch.utils.data.DataLoader(
         tes_dataset,
@@ -241,7 +236,9 @@ def main():
         shuffle=False,
         num_workers=4,
         pin_memory=True,
-        collate_fn=multi_task_collate_fn
+        collate_fn=multi_task_collate_fn,
+        worker_init_fn=seed_worker,
+        generator=torch.Generator().manual_seed(RANDOM_SEED + 2),
     )
 
     # Model and loss setup

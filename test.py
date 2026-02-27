@@ -9,6 +9,8 @@ data/test/
 """
 
 import os
+os.environ.setdefault("CUBLAS_WORKSPACE_CONFIG", ":4096:8")
+
 import argparse
 import pandas as pd
 import numpy as np
